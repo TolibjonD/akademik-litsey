@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %} Shartnoma ma'lumotlari {% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %} <body class="sub_page"> {% endblock style %}
+
+{% block content %}
+<div class="top_container ">
+    {% include "partials/navbar.html" %}
+  </div>
+  <div class="container my-3">
+    <div class="row mx-auto p-2 bg-light rounded">
+        <h2 class="text-center">Shartnoma</h2>
+        <div class="col-md-3">
+            <img src="{{ contract.talaba.rasmingiz.url }}" class="rounded mx-auto d-block" alt="..." style="width: 100%;">
+        </div>
+        <div class="col-md-9 mt-2">
+
+            <p>
+                <b class="text-warning">Talaba:</b>
+                <span class="text-muted">{{ contract.talaba.get_full_name }}</span>
+            </p>
+
+            <p>
+                <b class="text-warning">Fodayalanuvchi nomi:</b>
+                <span class="text-muted">
+                    <a href="{% url "profile" %}">@{{ contract.talaba.username }}</a>
+                </span>
+            </p>
+
+            <p>
+                <b class="text-warning">Shartnoma ID:</b>
+                <span class="text-muted">{{ contract.shartnoma_id }}</span>
+            </p>
+            <p>
+                <b class="text-warning">Fan nomi:</b>
+                <span class="text-muted">{{ contract.fan.fan_nomi }}</span>
+            </p>
+            <p>
+                <b class="text-warning">Dars boshlanish sanasi:</b>
+                <span class="text-muted">{{ contract.boshlanish_sanasi }}</span>
+            </p>
+            <p>
+                <b class="text-warning">Dars tugash sanasi:</b>
+                <span class="text-muted">{{ contract.tugash_sanasi }}</span>
+            </p>
+            <p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{ contract.teacher.rasmi.url }}" alt="No image" style="width: 100%;">
+                    </div>
+                    <div class="col-md-10">
+                        <b class="text-warning">Fan o'qituvchisi:</b>
+                        <span class="text-muted">{{ contract.teacher.get_full_name }}</span>
+                    </div>
+                </div>
+                
+            </p>
+            <p class="bg-white rounded mb-5 p-2">
+                <b class="text-warning">Fan haqida ma'lumot:</b>
+                <br>
+                <small class="text-muted  ms-3">{{ contract.fan.fan_haqida }}</small>
+            </p>
+            
+            <a href="{% url "profile" %}" class="btn btn-warning text-white position-absolute bottom-0 end-0">
+                Ortga
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

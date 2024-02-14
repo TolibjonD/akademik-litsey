@@ -1,0 +1,82 @@
+<header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="{% url "home" %}">
+          <span>
+            <i class="fa-solid fa-graduation-cap fa-xl"></i> Saidkodirov<span style="background: #fff; color: #ffc107;margin: 0; padding: 1px; border-radius: 6px;">Edu</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url "landing_page" %}">Bosh sahifa<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url "about" %}">Biz haqimizda</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url "home" %}#contact_section">Aloqa</a>
+              </li>
+
+              {% if request.user.is_authenticated %}
+
+             {% if request.user.is_superuser %}
+             <li class="nav-item">
+                <a class="nav-link" href="{% url "students_list" %}">Talabalar</a>
+              </li>
+
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ request.user.username }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url "profile" %}">
+                    <i class="fa-sharp fa-solid fa-user-graduate" style="color: #FFD43B;"></i>
+                    Mening kabinetim
+                  </a></li>
+
+                  <li><a class="dropdown-item" href="{% url "contract" %}"><i class="fa-solid fa-earth-oceania" style="color: #63E6BE;"></i> Fanlar ro'yxati</a></li>
+
+                  <li><a class="dropdown-item" href="{% url "contract" %}"><i class="fa-solid fa-id-card-clip" style="color: #B197FC;"></i> Shartnomalar</a></li>
+
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url "logout" %}"><i class="fa-solid fa-person-walking" style="color: #FF0000;"></i> Chiqish</a></li>
+                </ul>
+              </div>
+
+              {% else %}
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ request.user.username }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url "profile" %}">
+                    <i class="fa-sharp fa-solid fa-user-graduate" style="color: #FFD43B;"></i>
+                    Mening kabinetim
+                  </a></li>
+                  <li><a class="dropdown-item" href="{% url "contract" %}"><i class="fa-solid fa-person-chalkboard" style="color: #FFD43B;"></i> Mening darslarim</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url "logout" %}"><i class="fa-solid fa-person-walking" style="color: #FFD43B;"></i> Chiqish</a></li>
+                </ul>
+              </div>
+             {% endif %}
+
+             
+
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "login" %}">Kirish</a>
+              </li>
+              {% endif %}
+
+            </ul>
+          </div>
+      </nav>
+    </div>
+</header>

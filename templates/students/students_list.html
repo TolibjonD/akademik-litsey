@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} Talabalar ro'yxati {% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %} <body class="sub_page"> {% endblock style %}
+
+{% block content %}
+<div class="top_container ">
+    {% include "partials/navbar.html" %}
+  </div>
+  <div class="common_style">
+    <section class="admission_section">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-8 mx-auto">
+                    <h2 class="title mb-3 text-center">Talabalar ro'yxati</h2>
+                   {% if students %}
+                   
+                    {% for student in students %}
+                        <div class="row mx-auto bg-light rounded p-3 border shadow-sm">
+                            <div class="col-md-3">
+                                <img src="{{ student.rasmingiz.url }}" alt="" class="rounded" style="width: 100%;">
+                            </div>
+                            <div class="col-md-9">
+                                <p class="m-0">
+                                    <span class="text-warning">To'liq ismi: </span> {{ student.get_full_name }}
+                                </p>
+                                <p class="m-0">
+                                    <span class="text-warning">Fodayalanuvchi nomi: </span> {{ student.username }}
+                                </p>
+                                <p class="m-0">
+                                    <span class="text-warning">Email: </span> {{ student.email }}
+                                </p>
+                                <p class="m-0">
+                                    <span class="text-warning">Qabul sanasi: </span> {{ student.date_joined }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                   
+                   {% else %}
+                   <p>Talabalar hali ro'yxatdan o'tishni boshlamadi.</p>
+                   {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock content %}

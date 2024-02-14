@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %} Biz haqimizda {% endblock title %}
+{% load static %}
+{% block style %}
+<body class="sub_page">
+{% endblock style %}
+{% block content %}
+
+<div class="top_container">
+  <!-- header section strats -->
+  {% include "partials/navbar.html" %}
+</div>
+
+<div class="common_style">
+
+  <!-- about section -->
+  <section class="about_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="about_img-container">
+            <img src="{% static "images/about.png" %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="about_detail-box">
+            <h3>
+              Bizning litsey haqida
+            </h3>
+            <p>
+              <span style="color: #ffc107;">Saidkodirov</span><span style="background: #ffc107; color: #fff;margin: 0; padding: 1px; border-radius: 6px;">Edu</span> - bu O’zbekistonning yetakchi ta’lim muassasalari orasida. Bizning vazifamiz o’quvchilarni kelajakdagi kasb va ta’lim yo’nalishlariga tayyorlashdan iborat. Bizning litseyimiz gumanitar, texnika, chet tillari, IT va boshqa sohalar bo’yicha chuqur bilim olish imkoniyatini beradi.
+
+              Bizning litseyimiz 1999-yil 6-maydagi O‘zbekiston Respublikasi Vazirlar Mahkamasining 224-sonli qaroriga asosan tashkil etilgan. Bizning maqsadimiz o’quvchilarni tanlangan ixtisosga ega bo’lishni ta’minlaydigan bilimni chuqurlashtirish.
+
+              Bizning litseyimizda o’qish - bu har bir o’quvchining shaxsiy qobiliyatlari va qiziqishlarini hisobga olgan holda yuqori saviyada ta’lim olish imkoniyatini beradi. Bizning pedagoglar jamoamiz har bir o’quvchiga individual yondashuv bilan yondashadi, ularning har birining o’ziga xos qobiliyatlari va qiziqishlarini rivojlantirishga yordam beradi.
+
+              Bizning litseyimiz - bu o’quvchilar uchun ilmiy bilimlar, ijodiy fikrlash va muammolarni hal qilish uchun zarur bo’lgan mahoratlar olish uchun ajoyib joy. Biz sizni bizning jamoa bilan tanishishga taklif qilamiz!
+            </p>
+            <div class="">
+              <a href="" class="call_to-btn btn_white-border">
+                Qabulga o'tish
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+</div>
+
+{% endblock content %}

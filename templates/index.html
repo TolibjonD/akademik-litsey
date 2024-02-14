@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% block title %} Akademik litsey {% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+  {% block content %}
+  
+  <div class="top_container">
+    <!-- header section strats -->
+    {% include "partials/navbar.html" %}
+    <section class="hero_section ">
+      <div class="hero-container container">
+        <div class="hero_detail-box">
+          <h1>
+            Orzularingizni biz bilan quring!
+          </h1>
+          <p>
+           Bugungi kunda bizda ta'lim olgan ko'plab talabalar chet elning nufuzli oliygohlarida o'z o'qishlarini va ishlarini davom ettirishmoqdalar. Bizda o'qing va Zamon bilan hamnafas bo'lasiz !
+           
+          </p>
+          <div class="hero_btn-continer">
+            <a href="" class="call_to-btn btn_white-border">
+              Batafsil
+            </a>
+          </div>
+        </div>
+        <div class="hero_img-container">
+          <div>
+            <img src="{% static "images/academ.png" %}" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end header section -->
+
+  <div class="common_style">
+
+    <!-- about section -->
+    <section class="about_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about_img-container">
+              <img src="{% static "images/about.png" %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about_detail-box">
+              <h3>
+                Bizning litsey haqida
+              </h3>
+              <p>
+                Zamonaviy ta'lim tizimiga ega va qulay sharoitlarga boy ta'lim dargohi. Barcha zamonaviy sohalarni qamrab olgan va yuqori natijalarga ega litsey. Chet elda o'qish va ishlash yoki o'z sohangizda yetuk kadr bo'lish imkoniyatini qo'ldan boy bermang.
+              </p>
+              <div class="">
+                <a href="" class="call_to-btn btn_white-border">
+                  Hoziroq boshlash
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- end about section -->
+
+    <!-- admission section -->
+    <section class="admission_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="admission_detail-box">
+              <h3>
+                Qabul davom etmoqda
+              </h3>
+              <p>
+               Bizda hozirda barcha yo'nalishlarda qabul davom etmoqda. O'zingizga yoqgan sohani tanlang va qabulga yoziling. Soha tanlashda o'ylanayotgan bo'lsangiz, biz sizga bu borada ham yordam beramiz !
+              </p>
+              <div class="">
+                <a href="" class="call_to-btn btn_white-border">
+                  Qabulga o'tish
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="admission_img-container">
+              <img src="{% static "images/admission.png" %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- end admission section -->
+
+    <!-- why section -->
+    <section class="why_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="why_img-container">
+              <img src="{% static "images/why.png" %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="why_detail-box">
+              <h3>
+               Nima uchun <span style="color: #ffc107;">Saidkodirov</span><span style="background: #ffc107; color: #fff;margin: 0; padding: 1px; border-radius: 6px;">Edu</span>
+              </span>
+              </h3>
+              <p>
+               Bizda darslarni chet elda tahsil olgan yuqori ta'lim darajasiga ega saralangan o'qituvchilar olib borishadi. Shuningdek bizda ta'lim olish uchun barcha jihozlar va sharoitlar zamonaviy va juda ham qulay !
+              </p>
+              <div class="">
+                <a href="" class="call_to-btn btn_white-border ">
+                  O'qishni boshlash
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- end why section -->
+
+    <!-- determine section -->
+    <section class="determine_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="determine_detail-box">
+              <h3>
+                O'zingiz uchun yaxshisini qaror qiling
+              </h3>
+              <p>
+               Hozir sifatli ta'lim oling , bu esa sizning kelajagingiz uchun mustahkam poydevor hisoblanadi. Biz siz bilan doimiy tarzda shug'ullanib boramiz. Bizda zamonaviy kutubxona, oshxona, kompyuter xona va mashg'ulotlar zali mavjud. 
+              </p>
+              <div class="">
+                <a href="" class="call_to-btn btn_white-border">
+                  Darslarni boshlash
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="determine_img-container">
+              <img src="{% static "images/determine.png" %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- end determine section -->
+
+  </div>
+
+
+  <!-- client section -->
+  <section class="client_section layout_padding">
+    <h2 class="">
+      Talabalar fikri
+    </h2>
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{% static "images/student1.jpg" %}" alt="" style="--sc: 1.5;">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Abdullayeva Dilnoza
+                          </h5>
+                          <p>
+                            Menga akademik litseyda o'qish juda yoqadi. Bu yerda o'qish har bir kuni yangi bilim va tajriba bilan to'ldirilgan sarguzashtdir. Litseyimizning muallimlari har bir talabaga individual yondashuv bilan yondashadilar va bizning har birimizning o'ziga xos qobiliyatlari va qiziqishlarini rivojlantirishga yordam beradilar.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{% static "images/student2.jpg" %}" alt="" style="--sc: 1.2;">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Aliyev Jahongir
+                          </h5>
+                          <p>
+                            <span style="color: #ffc107;">Saidkodirov</span><span style="background: #ffc107; color: #fff;margin: 0; padding: 1px; border-radius: 6px;">Edu</span> - bu bilim va tajribalar makoni. Har bir kun - bu yangi kashfiyotlar va imkoniyatlar dunyosiga kirish. Men bu yerda o'zimni rivojlantiraman va o'zimni kelajak uchun tayyorlayman.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <div class="client_img-box">
+                          <img src="{% static "images/student3.jpg" %}" alt="" style="--sc: 1.5;">
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="client_detail-box">
+                          <h5>
+                            Kenjayev Suhrob
+                          </h5>
+                          <p>
+                            <span style="color: #ffc107;">Saidkodirov</span><span style="background: #ffc107; color: #fff;margin: 0; padding: 1px; border-radius: 6px;">Edu</span> - bu mening o'zimni rivojlantirishim, yangi narsalarni o'rganishim va dunyoni yangi nuqtai-nazaridan ko'rishim uchun ajoyib litsey. Bu yerdagi har bir kun yangi narsalarni o'rganishim va o'zimni kelajak uchun tayyorlashim uchun imkoniyatlar manbayi.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+     
+    </div>
+  </section>
+
+
+  <!-- end client section -->
+
+
+    <!-- contact section -->
+
+    <section class="contact_section " id="contact_section">
+
+        <div class="container">
+         
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center d-md-block">
+                <h2>
+                  Biz bilan bog'lanish
+                </h2>
+              </div>
+              <form method='post'>
+                {{ form|crispy }}
+                   {% csrf_token %}
+                    <div class="mt-5">
+                      <button type="submit" class="btn btn-success">
+                        Yuborish
+                      </button>
+                    </div>  
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div class="contact_img-box">
+                <img src="{% static "images/students.jpg" %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+     
+
+
+
+  
+  {% endblock content %}
+
+
+ 

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block title %} Shaxsiy kabinet {% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %} <body class="sub_page"> {% endblock style %}
+
+{% block content %}
+<div class="top_container ">
+    {% include "partials/navbar.html" %}
+  </div>
+ 
+        <div class="container my-3">
+            <div class="row mx-auto p-2 bg-light rounded">
+                <h2 class="text-center">
+                    Shaxsiy kabinet
+                    {% if request.user.is_superuser %}
+                    <i title="Admin" class="fa-solid fa-award" style="color: #63E6BE;"></i>
+                    {% endif %}
+                </h2>
+                <div class="col-md-3">
+                    <img src="{{ student.rasmingiz.url }}" class="rounded mx-auto d-block" alt="..." style="width: 100%;">
+                </div>
+                <div class="col-md-9 mt-2">
+
+                    <p>
+                        <b class="text-warning">To'liq ism:</b>
+                        <span class="text-muted">{{ student.get_full_name }}</span>
+                    </p>
+
+                    <p>
+                        <b class="text-warning">Fodayalanuvchi nomi:</b>
+                        <span class="text-muted">
+                            <a href="{% url "profile" %}">@{{ student.username }}</a>
+                        </span>
+                    </p>
+
+                    <p>
+                        <b class="text-warning">Email:</b>
+                        <span class="text-muted">{{ student.email }}</span>
+                    </p>
+                    <p>
+                        <b class="text-warning">ID Raqam:</b>
+                        <span class="text-muted">{{ student.IDNumber }}</span>
+                    </p>
+                    <p>
+                        <b class="text-warning">Tug'ilgan sana:</b>
+                        <span class="text-muted">{{ student.tavallud_sanasi }}</span>
+                    </p>
+                    <p class="bg-white rounded mb-5">
+                        <b class="text-warning">Qo'shimcha ma'lumot:</b>
+                        <br>
+                        <small class="text-muted ms-2">{{ student.biografiya }}</small>
+                    </p>
+                    
+                    <a href="{% url "profile_update" %}" class="btn btn-warning text-white position-absolute bottom-0 end-0">
+                        <i class="fa-solid fa-pen" style="color: #ffffff;"></i>
+                        Ma'lumotlarni yangilash
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% if request.user.is_superuser %}
+
+        <div class="container border rounded my-2">
+            <h2 class="title text-center">Tasdiqlanmagan arizalar</h2>
+            {% if pendings %}
+            <div class="row mx-auto p-3">
+                {% for pending in pendings %}
+                    <div class="col mx-auto my-2 rounded bg-light shadow border p-2">
+                        <p>
+                            <b class="text-primary">Shartnoma raqami</b>: <code>{{ pending.shartnoma_id }}</code>
+                        </p>
+                        <p>
+                            <b class="text-primary">Talaba</b>: <code>{{ pending.talaba.get_full_name }}</code>
+                        </p>
+                        <p>
+                            <b class="text-primary">Dars</b>: <code>{{ pending.fan.fan_nomi }}</code>
+                        </p>
+                        <a href="{% url "verify_contract" pending.shartnoma_id %}" class="btn btn-primary">Tasdiqlash <i class="fa-solid fa-check" style="color: #ffffff;"></i></a>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>Arizalar mavjud emas</p>
+            {% endif %}
+        </div>
+
+        <div class="container border rounded my-2">
+            <h2 class="title text-center">Tasdiqlangan arizalar</h2>
+            {% if verified_contracts %}
+            <div class="row mx-auto p-3">
+                {% for verified_contract in verified_contracts %}
+                    <div class="col mx-auto my-2 rounded bg-light shadow border p-2">
+                        <p>
+                            <b class="text-primary">Shartnoma raqami</b>: <code>{{ verified_contract.shartnoma_id }}</code>
+                        </p>
+                        <p>
+                            <b class="text-primary">Talaba</b>: <code>{{ verified_contract.talaba.get_full_name }}</code>
+                        </p>
+                        <p>
+                            <b class="text-primary">Dars</b>: <code>{{ verified_contract.fan.fan_nomi }}</code>
+                        </p>
+                        <a href="{% url "contract_detail" verified_contract.shartnoma_id %}" class="btn btn-primary text-white">Ko'rish <i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>
+                        <a href="{% url "verify_contract" verified_contract.shartnoma_id  %}" class="btn btn-danger">O'zgartirish</a>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>Arizalar mavjud emas</p>
+            {% endif %}
+        </div>
+
+        {% else %}
+        <div class="container border rounded my-2 p-3">
+            <h2 class="title text-center">Sizning darslaringiz</h2>
+            {% if applied_lessons %}
+            <p class="mb-2 bg-warning rounded ps-2 text-white">Sizda <span class="fs-5 text-secondary fw-bold"> {{ applied_lessons_count }} </span> ta dars(lar) mavjud .</p>
+            <div class="row mx-auto">
+            {% for contract in applied_lessons %}
+                <div class="col mx-auto rounded border shadow p-2">
+                    <p>
+                        <b class="text-primary">Shartnoma Raqami:</b> <code> {{ contract.shartnoma_id }} </code>
+                    </p>
+                    <p>
+                        <b class="text-primary">Dars:</b> <code> {{ contract.fan.fan_nomi }} </code>
+                    </p>
+                    {% if contract.status == 'KT' %}
+                        <a class="btn btn-primary text-white disabled">Tasdiqlash kutilmoqda...
+                            <i class="fa-solid fa-hourglass-start fa-spin-pulse" style="color: #ffffff;"></i>
+                        </a>
+                    {% endif %}
+                    {% if contract.status == 'TD' %}
+                        <a href="{% url "contract_detail" contract.shartnoma_id %}" class="btn btn-primary text-white">Ko'rish <i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>
+                        <a class="btn btn-success disabled text-white">Dars tasdiqlangan</a>
+                    {% endif %}
+                    
+                </div>
+            {% endfor %}
+            </div>
+            {% else %}
+            <img src="{% static "images/no_applied_lessons.gif" %}" alt="" style="width: 160px" class="d-block mx-auto">
+            <p class=" text-center">Siz hali darslarga qabul qilinmagansiz 😔 .</p>
+            {% endif %}
+        </div>
+
+        <div class="container bg-light my-2 p-2">
+            <h2 class="title text-center">Darslarni tanlang</h2>
+            {% if lessons_list %}
+            
+            <div class="row">
+                {% for unselected_lesson in lessons_list %}
+                <div class="card mx-auto bg-white shadow my-3" style="min-width: 250px; width: 90%;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ unselected_lesson.fan_nomi }}</h5>
+                      <p class="card-text text-muted"> {{ unselected_lesson.fan_haqida|safe|truncatechars:120 }} </p>
+                      <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="course_id" value="{{ unselected_lesson.id }}">
+                        <button type="submit" class="btn btn-primary">Darsni olish</button>
+                      </form>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+
+            
+            {% else %}
+            <img src="{% static "images/sand_clock.gif" %}" alt="" style="width: 60px" class="d-block mx-auto">
+                <p class="text-center">Yangi darslar qo'shilishi kutilmoqda, Sabr qiling !...</p>
+            {% endif %}
+        </div>
+        
+        {% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Ro'yxatdan o'tish {% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %} <body class="sub_page"> {% endblock style %}
+
+{% block content %}
+<div class="top_container ">
+    {% include "partials/navbar.html" %}
+  </div>
+  <div class="common_style">
+    <section class="admission_section">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-8 mx-auto">
+                   <h2 class="text-center">Loyihaning fizik modeli</h2>
+                   <iframe width="100%" height="500px" style="box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); border-radius:15px;" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Embedded DrawSQL IFrame" frameborder="0" src="https://drawsql.app/teams/tolibjon/diagrams/academic-lyceum/embed"></iframe> 
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock content %}
