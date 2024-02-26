@@ -88,8 +88,9 @@
         <div class="container border rounded my-2">
             <h2 class="title text-center">Tasdiqlangan arizalar</h2>
             {% if verified_contracts %}
-            <div class="row mx-auto p-3">
+           
                 {% for verified_contract in verified_contracts %}
+                <div class="row mx-auto p-3">
                     <div class="col mx-auto my-2 rounded bg-light shadow border p-2">
                         <p>
                             <b class="text-primary">Shartnoma raqami</b>: <code>{{ verified_contract.shartnoma_id }}</code>
@@ -103,8 +104,9 @@
                         <a href="{% url "contract_detail" verified_contract.shartnoma_id %}" class="btn btn-primary text-white">Ko'rish <i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>
                         <a href="{% url "verify_contract" verified_contract.shartnoma_id  %}" class="btn btn-danger">O'zgartirish</a>
                     </div>
+                </div>
                 {% endfor %}
-            </div>
+            
             {% else %}
             <p>Arizalar mavjud emas</p>
             {% endif %}
