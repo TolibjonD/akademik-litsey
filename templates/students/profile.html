@@ -64,8 +64,9 @@
         <div class="container border rounded my-2">
             <h2 class="title text-center">Tasdiqlanmagan arizalar</h2>
             {% if pendings %}
-            <div class="row mx-auto p-3">
+            
                 {% for pending in pendings %}
+                <div class="row mx-auto p-3">
                     <div class="col mx-auto my-2 rounded bg-light shadow border p-2">
                         <p>
                             <b class="text-primary">Shartnoma raqami</b>: <code>{{ pending.shartnoma_id }}</code>
@@ -77,9 +78,10 @@
                             <b class="text-primary">Dars</b>: <code>{{ pending.fan.fan_nomi }}</code>
                         </p>
                         <a href="{% url "verify_contract" pending.shartnoma_id %}" class="btn btn-primary">Tasdiqlash <i class="fa-solid fa-check" style="color: #ffffff;"></i></a>
+                     </div>
                     </div>
                 {% endfor %}
-            </div>
+            
             {% else %}
             <p>Arizalar mavjud emas</p>
             {% endif %}
@@ -117,8 +119,9 @@
             <h2 class="title text-center">Sizning darslaringiz</h2>
             {% if applied_lessons %}
             <p class="mb-2 bg-warning rounded ps-2 text-white">Sizda <span class="fs-5 text-secondary fw-bold"> {{ applied_lessons_count }} </span> ta dars(lar) mavjud .</p>
-            <div class="row mx-auto">
+            
             {% for contract in applied_lessons %}
+            <div class="row mx-auto">
                 <div class="col mx-auto rounded border shadow p-2">
                     <p>
                         <b class="text-primary">Shartnoma Raqami:</b> <code> {{ contract.shartnoma_id }} </code>
@@ -137,8 +140,9 @@
                     {% endif %}
                     
                 </div>
-            {% endfor %}
             </div>
+            {% endfor %}
+           
             {% else %}
             <img src="{% static "images/no_applied_lessons.gif" %}" alt="" style="width: 160px" class="d-block mx-auto">
             <p class=" text-center">Siz hali darslarga qabul qilinmagansiz 😔 .</p>
